@@ -40,12 +40,23 @@ function App() {
       return;
     }
 
+    // email validation
+    const emailRegex =
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+@[A-Za-z\d]+\.[A-Za-z\d]+$/;
+    if (!emailRegex.test(email)) {
+      setFormError({
+        isError: true,
+        msg: "Please enter a valid email address with both letters and numbers",
+      });
+      return;
+    }
+
+    console.log(fullName + " " + email + " " + number + " " + address);
+
     setFormSuccess({
       isSuccess: true,
       msg: `Thank You ${fullName}`,
     });
-
-    console.log(fullName + " " + email + " " + number + " " + address);
 
     // clean previous data
     setFullName("");
@@ -111,7 +122,7 @@ function App() {
                 fullName.trim().length === 0
                   ? "border-red-500"
                   : "border-green-500"
-              } border-red-500 p-2 rounded-md font-thin text-green-950 outline-none`}
+              } p-2 rounded-md font-thin text-green-950 outline-none`}
               onChange={(e) => setFullName(e.target.value)}
             />
           </div>
@@ -130,7 +141,7 @@ function App() {
                 email.trim().length === 0
                   ? "border-red-500"
                   : "border-green-500"
-              } border-red-500 p-2 rounded-md font-thin text-green-950 outline-none`}
+              } p-2 rounded-md font-thin text-green-950 outline-none`}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -148,7 +159,7 @@ function App() {
                 number.trim().length === 0
                   ? "border-red-500"
                   : "border-green-500"
-              } border-red-500 p-2 rounded-md font-thin text-green-950 outline-none`}
+              } p-2 rounded-md font-thin text-green-950 outline-none`}
               onChange={(e) => setNumber(e.target.value)}
             />
           </div>
@@ -166,7 +177,7 @@ function App() {
                 address.trim().length === 0
                   ? "border-red-500"
                   : "border-green-500"
-              } border-red-500 p-2 rounded-md font-thin text-green-950 outline-none`}
+              } p-2 rounded-md font-thin text-green-950 outline-none`}
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
